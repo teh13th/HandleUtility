@@ -12,7 +12,7 @@ namespace teh13th.HandleUtility.Tests
 	{
 		private const int TestTimeout = 10000;
 
-		[TestMethod, Timeout(TestTimeout)]
+		[TestMethod, Timeout(TestTimeout), TestCategory("Disabled")]
 		public void GetHandlesForFile_Correct_WhenValidFilePathGiven()
 		{
 			var testFilePath = Path.Combine(Path.GetTempPath(), "1232465465d1.tmp");
