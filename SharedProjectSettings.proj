@@ -4,13 +4,16 @@
 		<LangVersion>latest</LangVersion>
 
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+
 		<Company>teh13th</Company>
 		<Authors>teh13th</Authors>
 		<Copyright>Copyright © teh13th 2019</Copyright>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl></RepositoryUrl>
-		<PackageProjectUrl></PackageProjectUrl>
-		<PackageTags></PackageTags>
+		<RepositoryUrl>https://github.com/teh13th/HandleUtility.git</RepositoryUrl>
+		<PackageProjectUrl>https://dev.azure.com/teh13th/HandleUtility</PackageProjectUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/teh13th/HandleUtility/master/LICENSE</PackageLicenseUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageTags>handles;file;windows</PackageTags>
 
 		<!-- ReSharper disable UnknownProperty -->
 		<AssemblyVersion Condition="'$(VersionAssembly)' == ''">1.0.0.0</AssemblyVersion>

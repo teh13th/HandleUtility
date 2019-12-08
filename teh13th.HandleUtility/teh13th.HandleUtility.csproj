@@ -2,7 +2,7 @@
 	<Import Project="..\SharedProjectSettings.proj" />
 	<PropertyGroup>
 		<AssemblyTitle>teh13th.HandleUtility</AssemblyTitle>
-		<TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
 		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 
