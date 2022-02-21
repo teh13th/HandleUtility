@@ -11,7 +11,7 @@ namespace teh13th.HandleUtility.Tests
 	{
 		private const int TestTimeout = 10000;
 
-		[TestMethod, Timeout(TestTimeout)]
+		[TestMethod, Timeout(TestTimeout), Ignore]
 		public void GetHandlesForFile_Correct_WhenValidFilePathGiven()
 		{
 			var testFilePath = Path.GetTempFileName();
