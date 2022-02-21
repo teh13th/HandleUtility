@@ -1,23 +1,20 @@
 ﻿using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using teh13th.HandleUtility.Interfaces;
 
-namespace teh13th.HandleUtility.Tools
+namespace teh13th.HandleUtility.Tools;
+
+internal sealed class ProcessNameGetter : IProcessNameGetter
 {
-	internal sealed class ProcessNameGetter : IProcessNameGetter
+	public string GetProcessNameById(int id)
 	{
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public string GetProcessNameById(int id)
+		try
 		{
-			try
-			{
-				using var process = Process.GetProcessById(id);
-				return process.ProcessName;
-			}
-			catch
-			{
-				return "UNKNOWN";
-			}
+			using var process = Process.GetProcessById(id);
+			return process.ProcessName;
+		}
+		catch
+		{
+			return "UNKNOWN";
 		}
 	}
 }

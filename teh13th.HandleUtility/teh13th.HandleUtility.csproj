@@ -1,20 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<Import Project="..\SharedProjectSettings.proj" />
+
+	<PropertyGroup Condition=" '$(OS)' == 'Windows_NT' ">
+		<!--<TargetFrameworks>net40;netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>-->
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(OS)' != 'Windows_NT' ">
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+	</PropertyGroup>
+
 	<PropertyGroup>
 		<AssemblyTitle>teh13th.HandleUtility</AssemblyTitle>
-		<TargetFrameworks>netstandard2.0;netcoreapp3.0</TargetFrameworks>
 		<AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
 		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
 
 		<IsPackable>true</IsPackable>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<Product>teh13th.HandleUtility</Product>
+		<Company>teh13th</Company>
+		<Authors>teh13th</Authors>
+		<Copyright>Copyright © teh13th 2019-2022</Copyright>
 		<Description>Utility for working with Windows handles.</Description>
+		<PackageTags>teh13th;windows;handles</PackageTags>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/teh13th/HandleUtility.git</RepositoryUrl>
+		<PackageProjectUrl>https://dev.azure.com/teh13th/HandleUtility</PackageProjectUrl>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/teh13th/HandleUtility/master/LICENSE</PackageLicenseUrl>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
-		<!-- ReSharper disable UnknownProperty -->
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-		<!-- ReSharper restore UnknownProperty -->
 	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
-	</ItemGroup>
 </Project>
