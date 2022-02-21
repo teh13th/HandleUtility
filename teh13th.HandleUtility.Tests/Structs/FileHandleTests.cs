@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -14,13 +13,12 @@ namespace teh13th.HandleUtility.Tests.Structs
 		private const int TestTimeout = 1000;
 
 		[TestMethod, Timeout(TestTimeout)]
-		[SuppressMessage("ReSharper", "ObjectCreationAsStatement")]
 		public void Constructor_Success_WhenCalled()
 		{
 			var mock = new Mock<IProcessNameGetter>();
 			mock.Setup(x => x.GetProcessNameById(It.IsAny<int>())).Returns("process");
 
-			Action act = () => new FileHandle("path", new IntPtr(1), 1, 1, mock.Object);
+			Action act = () => _ = new FileHandle("path", new IntPtr(1), 1, 1, mock.Object);
 
 			act.Should().NotThrow();
 			mock.Verify(x => x.GetProcessNameById(It.IsAny<int>()), Times.Once);

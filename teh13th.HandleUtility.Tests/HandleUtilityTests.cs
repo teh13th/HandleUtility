@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using FluentAssertions;
@@ -12,10 +11,10 @@ namespace teh13th.HandleUtility.Tests
 	{
 		private const int TestTimeout = 10000;
 
-		[TestMethod, Timeout(TestTimeout), TestCategory("Disabled")]
+		[TestMethod, Timeout(TestTimeout), Ignore]
 		public void GetHandlesForFile_Correct_WhenValidFilePathGiven()
 		{
-			var testFilePath = Path.Combine(Path.GetTempPath(), "1232465465d1.tmp");
+			var testFilePath = Path.GetTempFileName();
 
 			try
 			{
@@ -24,7 +23,7 @@ namespace teh13th.HandleUtility.Tests
 					var handles = HandleUtility.GetHandlesForFile(testFilePath).ToArray();
 
 					handles.Should().NotBeNull();
-					handles.Should().HaveCount(1);
+					handles.Should().HaveCountGreaterThanOrEqualTo(1);
 				}
 			}
 			finally
@@ -34,27 +33,23 @@ namespace teh13th.HandleUtility.Tests
 		}
 
 		[TestMethod, Timeout(TestTimeout)]
-		[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
-		[SuppressMessage("ReSharper", "ReturnValueOfPureMethodIsNotUsed")]
 		public void GetHandlesForFile_ThrowsException_WhenNullFilePathGiven()
 		{
-			Action act = () => HandleUtility.GetHandlesForFile(null).ToArray();
+			Action act = () => _ = HandleUtility.GetHandlesForFile(null!).ToArray();
 			act.Should().ThrowExactly<ArgumentNullException>();
 		}
 
 		[DataTestMethod, Timeout(TestTimeout)]
-		[SuppressMessage("ReSharper", "ReturnValueOfPureMethodIsNotUsed")]
 		public void GetHandlesForFile_ThrowsException_WhenEmptyFilePathGiven()
 		{
-			Action act = () => HandleUtility.GetHandlesForFile(string.Empty).ToArray();
+			Action act = () => _ = HandleUtility.GetHandlesForFile(string.Empty).ToArray();
 			act.Should().ThrowExactly<ArgumentException>();
 		}
 
 		[DataTestMethod, Timeout(TestTimeout)]
-		[SuppressMessage("ReSharper", "ReturnValueOfPureMethodIsNotUsed")]
 		public void GetHandlesForFile_ThrowsException_WhenWhitespaceFilePathGiven()
 		{
-			Action act = () => HandleUtility.GetHandlesForFile("    ").ToArray();
+			Action act = () => _ = HandleUtility.GetHandlesForFile("    ").ToArray();
 			act.Should().ThrowExactly<ArgumentException>();
 		}
 	}
